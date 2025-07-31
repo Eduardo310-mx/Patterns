@@ -35,8 +35,19 @@ export function makeBoard(rows, cols) {
  * @returns `null` if `size` is not a number
  * @returns `[]` if `size` is 0 or negative
  */
-export function makeTriangle(size) {
-  // TODO
+export function makeTriangle(size ) {
+  if (typeof size !== 'number') return null;
+  if (size <= 0) return [];
+
+  const triangle = [];
+  for (let i = 1; i <= size; i++) {
+     //For each row: It creates a new array with i elements, all filled with the string '-'.
+    //Example: when i = 3, it makes ['-', '-', '-'].
+    const row = Array(i).fill('-');
+    triangle.push(row);
+  }
+
+  return triangle;
 }
 
 /**
@@ -46,5 +57,19 @@ export function makeTriangle(size) {
  * @returns `0` if `letter is not a string
  */
 export function countLetter(words, letter) {
-  // TODO
+  if (typeof letter !== 'string' || letter.length !== 1) return 0;
+  //returns a new string by concatenating all of the elements in this array, 
+  //separated by commas or a specified separator string.
+  const allWords = words.join('');
+  let count = 0;
+  //Iterates a string (allWords), checking each character one by one.
+  for (let i = 0; i < allWords.length; i++) {
+    //Checks if the character at index i equals the letter we're looking for.
+    if (allWords[i] === letter) {
+      count++;
+    }
+  }
+
+  return count;
+
 }
